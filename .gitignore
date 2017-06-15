@@ -57,3 +57,7 @@ DJI-SDK-LIB/proguard/
 # Mac files
 .DS_Store
 
+# Gradle
+# ------
+.gradle
+
