@@ -3,27 +3,27 @@ package haivo.us.crypto.util;
 import android.content.Context;
 import android.text.format.DateFormat;
 import android.text.format.DateUtils;
+import haivo.us.crypto.model.CurrencySubunit;
 import java.text.DecimalFormat;
 import java.util.Date;
-import haivo.us.crypto.model.CurrencySubunit;
 
 public class FormatUtilsBase {
     private static final DecimalFormat FORMAT_EIGHT_SIGNIFICANT_AT_MOST;
-    private static final DecimalFormat FORMAT_THREE_SIGNIFICANT_AT_MOST;
+    private static final DecimalFormat FORMAT_FIVE_SIGNIFICANT_AT_MOST;
     private static final DecimalFormat FORMAT_TWO_DECIMAL;
 
     static {
         FORMAT_TWO_DECIMAL = new DecimalFormat("0.00");
-        FORMAT_THREE_SIGNIFICANT_AT_MOST = new DecimalFormat("@##");
+        FORMAT_FIVE_SIGNIFICANT_AT_MOST = new DecimalFormat("@#####");
         FORMAT_EIGHT_SIGNIFICANT_AT_MOST = new DecimalFormat("@#######");
     }
 
     public static String formatDouble(double value, boolean isPrice) {
-        return formatDouble(value < 1.0d ? FORMAT_THREE_SIGNIFICANT_AT_MOST : FORMAT_TWO_DECIMAL, value);
+        return formatDouble(value < 1.0d ? FORMAT_FIVE_SIGNIFICANT_AT_MOST : FORMAT_TWO_DECIMAL, value);
     }
 
-    public static String formatDoubleWithThreeMax(double value) {
-        return formatDouble(FORMAT_THREE_SIGNIFICANT_AT_MOST, value);
+    public static String formatDoubleWithFiveMax(double value) {
+        return formatDouble(FORMAT_FIVE_SIGNIFICANT_AT_MOST, value);
     }
 
     protected static String formatDoubleWithEightMax(double value) {
@@ -60,7 +60,7 @@ public class FormatUtilsBase {
     }
 
     public static String formatPriceWithCurrency(String priceString, String currency) {
-        return priceString + " " + CurrencyUtils.getCurrencySymbol(currency);
+        return priceString + CurrencyUtils.getCurrencySymbol(currency);
     }
 
     public static String formatPriceValueForSubunit(double price,

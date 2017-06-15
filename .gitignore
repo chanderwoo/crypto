@@ -8,6 +8,11 @@
 # Java class files
 *.class
 
+# Gradle shit
+./gradle
+./gradle/
+./gradle/*
+
 # generated files
 bin/
 gen/
